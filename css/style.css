@@ -1,0 +1,328 @@
+/* ==========================================================================
+   CSS Variables & Typography
+   ========================================================================== */
+@font-face {
+  font-family: 'Mokoto Glitch';
+  src: url('../assets/fonts/mokoto-glitch.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Mokoto';
+  src: url('../assets/fonts/mokoto.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Telegraf';
+  src: url('../assets/fonts/telegraf.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  src: url('../assets/fonts/opensans.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --color-bg: #2f2236;
+  --color-bg-card: rgba(36, 26, 42, 0.75);
+  --color-card-border: rgba(211, 187, 97, 0.25);
+  --color-card-hover: rgba(211, 187, 97, 0.15);
+  --color-text-primary: #ffffff;
+  --color-text-accent: #d3bb61;
+  --color-text-muted: #a3919f;
+  --color-featured: #d3bb61;
+  --font-title: 'Mokoto Glitch', 'Mokoto', sans-serif;
+  --font-buttons: 'Mokoto', sans-serif;
+  --font-body: 'Open Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --max-width: 520px;
+  --border-radius-sm: 8px;
+  --border-radius-md: 14px;
+  --border-radius-lg: 24px;
+  --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ==========================================================================
+   Reset & Base Styles
+   ========================================================================== */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  background-color: var(--color-bg);
+  color: var(--color-text-primary);
+  font-family: var(--font-body);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 2.5rem 1rem;
+  position: relative;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ==========================================================================
+   Background Overlay
+   ========================================================================== */
+.background-overlay {
+  position: fixed;
+  inset: 0;
+  background-image: url('../assets/images/background.jpg');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  opacity: 0.35;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Subtle dark radial gradient over background */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at center, transparent 0%, rgba(20, 14, 25, 0.8) 100%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ==========================================================================
+   Main Single-Column Container
+   ========================================================================== */
+.page-container {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: var(--max-width);
+  background: var(--color-bg-card);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--color-card-border);
+  border-radius: var(--border-radius-lg);
+  padding: 2.5rem 1.75rem;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 40px rgba(211, 187, 97, 0.05);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+/* ==========================================================================
+   Profile Header
+   ========================================================================== */
+.profile-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1.25rem;
+  width: 100%;
+}
+
+.logo-wrapper {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  padding: 4px;
+  background: linear-gradient(135deg, var(--color-text-accent), transparent 70%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+.profile-logo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  background-color: #1a121e;
+}
+
+.profile-title {
+  font-family: var(--font-title);
+  font-size: clamp(2.2rem, 5vw, 2.8rem);
+  color: var(--color-text-muted);
+  letter-spacing: 2px;
+  text-shadow: 0 0 20px rgba(163, 145, 159, 0.4);
+  line-height: 1.2;
+}
+
+/* ==========================================================================
+   Links Section
+   ========================================================================== */
+.links-section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.links-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  width: 100%;
+}
+
+.link-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.9rem 1.25rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--border-radius-md);
+  color: var(--color-text-primary);
+  text-decoration: none;
+  font-family: var(--font-buttons);
+  font-size: 0.95rem;
+  letter-spacing: 0.5px;
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.link-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(211, 187, 97, 0.1), transparent);
+  opacity: 0;
+  transition: var(--transition);
+}
+
+.link-card:hover {
+  transform: translateY(-2px);
+  background: var(--color-card-hover);
+  border-color: var(--color-text-accent);
+  box-shadow: 0 6px 20px rgba(211, 187, 97, 0.2);
+}
+
+.link-card:hover::before {
+  opacity: 1;
+}
+
+.link-icon-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+}
+
+.link-icon {
+  width: 26px;
+  height: 26px;
+  object-fit: contain;
+  border-radius: 6px;
+}
+
+.link-label {
+  flex-grow: 1;
+  text-align: center;
+  padding: 0 0.75rem;
+}
+
+.link-arrow {
+  color: var(--color-text-accent);
+  font-size: 1.1rem;
+  transition: var(--transition);
+  flex-shrink: 0;
+}
+
+.link-card:hover .link-arrow {
+  transform: translateX(4px);
+}
+
+/* Featured / Special card */
+.link-card.featured {
+  background: rgba(211, 187, 97, 0.12);
+  border: 1px solid var(--color-text-accent);
+  box-shadow: 0 4px 15px rgba(211, 187, 97, 0.2);
+}
+
+.link-card.featured .link-label {
+  color: var(--color-text-accent);
+  font-weight: 600;
+}
+
+/* ==========================================================================
+   Spotify Embed Player
+   ========================================================================== */
+.player-wrapper {
+  width: 100%;
+  border-radius: var(--border-radius-md);
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.player-wrapper iframe {
+  display: block;
+}
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+.page-footer {
+  text-align: center;
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+  opacity: 0.7;
+}
+
+/* ==========================================================================
+   Responsive Adaptations
+   ========================================================================== */
+@media (max-width: 480px) {
+  body {
+    padding: 1.25rem 0.75rem;
+  }
+
+  .page-container {
+    padding: 2rem 1.2rem;
+    border-radius: var(--border-radius-md);
+  }
+
+  .profile-title {
+    font-size: 2.1rem;
+  }
+
+  .link-card {
+    padding: 0.8rem 1rem;
+    font-size: 0.88rem;
+  }
+
+  .link-icon-box {
+    width: 28px;
+    height: 28px;
+  }
+
+  .link-icon {
+    width: 22px;
+    height: 22px;
+  }
+}
